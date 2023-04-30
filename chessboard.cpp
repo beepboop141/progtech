@@ -29,7 +29,7 @@ class ChessBoardArray {
     
     // used for the public class:
     int *data; //data of the chessboard array
-    int Size, Base; 
+    int Size, Base; //size and base
  
  public:
     ChessBoardArray(unsigned size = 0, unsigned base = 0) {
@@ -37,7 +37,7 @@ class ChessBoardArray {
         Base = base; 
         int k = (size * size /2) + (size % 2);
         data = new int[k];
-        for (unsigned i =0; i <k; ++i) data[i] = 0; 
+        for (unsigned i =0; i <k; ++i) data[i] = 0; //initializing array
     }
     ChessBoardArray(const ChessBoardArray &a) {
         Size = a.Size; 
@@ -46,7 +46,7 @@ class ChessBoardArray {
         data = new int[k]; 
         for (int i=0; i<k; ++i) data[i] = a.data[i]; 
     }
-    ~ChessBoardArray() { delete [] data; }
+    ~ChessBoardArray() { delete [] data; } //destructor
 
     ChessBoardArray & operator = (const ChessBoardArray &a) {
         delete [] data; 
@@ -61,7 +61,7 @@ class ChessBoardArray {
     int & select(int i, int j) { return data[loc(i,j)]; }
     int select(int i, int j) const { return data[loc(i,j)]; }
 
-    const Row operator [] (int i) { return Row(*this, i);}
+    const Row operator [] (int i) { return Row(*this, i);} // return reference to the current object and its index
     const ConstRow operator [] (int i) const { return ConstRow(*this, i);}
     friend ostream & operator << (ostream &out, const ChessBoardArray &a) {
         for (int i =0; i <a.Size; ++i) {
