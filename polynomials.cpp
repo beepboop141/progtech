@@ -1,3 +1,5 @@
+// For some reason it gives an issue on grader with the comments;
+// remove them and it should be good
 #include <iostream>
 #include <math.h>
 using namespace std; 
