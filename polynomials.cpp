@@ -134,7 +134,7 @@ class Polynomial {
                      out << "- ";
                 else if (pp->coefficient < 0)
                     out << " - ";
-                else if (pp != p.head) out << " + ";
+                else if (pp-> coefficient > 0) out << " + ";
                 if (abs(pp->coefficient) == 1 && pp->exponent == 0)
                     out << '1'; 
                 if (abs(pp->coefficient) != 1)
