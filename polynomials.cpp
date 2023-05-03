@@ -129,12 +129,21 @@ class Polynomial {
     friend ostream & operator << (ostream &out, const Polynomial &p) {  
         if (p.head == nullptr) out << "0";  
         else {
-            for(Term *pp = p.head; pp!= nullptr; pp = pp->next){  
-                if (p.head->coefficient < 0)
-                     out << "- ";
-                else if (pp->coefficient < 0)
+            if (p.head->coefficient < 0)
+                out << "- ";
+            if (abs(p.head->coefficient) == 1 && p.head->exponent == 0)
+                out << "1"; 
+            if (abs(p.head->coefficient) != 1)
+                out << abs(p.head->coefficient);
+            if (p.head->exponent >= 1)
+                out << "x";
+            if (p.head->exponent > 1)
+                out << "^" << p.head->exponent; 
+
+            for(Term *pp = p.head->next; pp!= nullptr; pp = pp->next){  
+                if (pp->coefficient < 0)
                     out << " - ";
-                else if (pp-> coefficient > 0) out << " + ";
+                else out << " + ";
                 if (abs(pp->coefficient) == 1 && pp->exponent == 0)
                     out << '1'; 
                 if (abs(pp->coefficient) != 1)
