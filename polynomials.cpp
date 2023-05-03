@@ -132,7 +132,7 @@ class Polynomial {
             for(Term *pp = p.head; pp!= nullptr; pp = pp->next){  
                 if (p.head->coefficient < 0)
                      out << "- ";
-                if (pp->coefficient < 0)
+                else if (pp->coefficient < 0)
                     out << " - ";
                 else if (pp != p.head) out << " + ";
                 if (abs(pp->coefficient) == 1 && pp->exponent == 0)
